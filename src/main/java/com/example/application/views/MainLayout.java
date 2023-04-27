@@ -4,6 +4,7 @@ package com.example.application.views;
 import com.example.application.components.appnav.AppNav;
 import com.example.application.components.appnav.AppNavItem;
 import com.example.application.views.about.AboutView;
+import com.example.application.views.about.TreeGridView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.Footer;
@@ -53,6 +54,7 @@ public class MainLayout extends AppLayout {
         // For documentation, visit https://github.com/vaadin/vcf-nav#readme
         AppNav nav = new AppNav();
 
+        nav.addItem(new AppNavItem("Tree grid", TreeGridView.class, LineAwesomeIcon.FILE.create()));
         nav.addItem(new AppNavItem("About", AboutView.class, LineAwesomeIcon.FILE.create()));
 
         return nav;
