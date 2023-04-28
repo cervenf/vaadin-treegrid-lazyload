@@ -5,6 +5,7 @@ import com.example.application.backend.dto.TreeNode;
 import com.example.application.backend.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +22,8 @@ public class DataProviderService {
     private final TeacherRepository teacherRepository;
 
     public Stream<TreeNode> getAllTeachers(PageRequest pageRequest) {
-        return teacherRepository.findAll(pageRequest)
+        var p = pageRequest.withSort(Sort.Direction.ASC, "id");
+        return teacherRepository.findAll(p)
                 .stream()
                 .map(t -> new TreeNode(t.getId(), t.getName(), "teacher"));
     }
